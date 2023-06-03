@@ -1,0 +1,15 @@
+-
+  name: this playbook will install Nginx
+  hosts: servers
+  become: yes
+  tasks:
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: latest
+      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+    - name: Install AWS CLI
+      apt:
+        name: awscli
+        state: latest
+      when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'

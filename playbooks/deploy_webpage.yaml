@@ -1,0 +1,17 @@
+-
+  name: This is simple web page deployment
+  hosts: prod_1
+  become: yes
+  tasks:
+    - name: Install Nginx
+      apt:
+        name: nginx
+        state: latest
+    - name: Start Nginx
+      service:
+        name: nginx
+        state: started
+    - name: Copy html file
+      copy:
+        src: /home/ubuntu/ansible/project/index.html
+        dest: /var/www/html
